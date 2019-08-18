@@ -1,6 +1,3 @@
-from requests import get
-from requests.exceptions import RequestException
-from contextlib import closing
 from bs4 import BeautifulSoup
 from simpleG import simple_get
 
@@ -15,8 +12,16 @@ for i in range(1, 2):
             if target.startswith('https://www.discudemy.com/English/'):
                 print(target)
                 links.add(target)
+        daRealLinks = set()
+        for entry in links:
+            singleSite = simple_get(entry)
+            if singleSite is not None:
+                sSHtml = BeautifulSoup(singleSite, 'html.parser')
+                for realLink in sSHtml.find_all('a'):
+                    realTarget = realLink.get('href')
+                    if realTarget.startswith('https://www.discudemy.com/go/'):
+                        print(target)
+                        daRealLinks.add(realTarget)
 
-        #for entry in links:
-         #   print(entry)
 
 
