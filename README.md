@@ -1,4 +1,3 @@
-# udemy-free-courses
+# Webscraping Excercise
 
-discudemy.com scraper & a list of free Udemy courses.<br>
-Many thanks to discudemy.com.<br>
+Trying to scrape discudemy to save some time
