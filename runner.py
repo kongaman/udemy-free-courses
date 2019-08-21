@@ -14,6 +14,7 @@ for i in range(1, 2):
             if target.startswith('https://www.discudemy.com/English/'):
                 print(target)
                 links.add(target)
+
         daRealLinks = set()
 
         driver = webdriver.Firefox()
@@ -30,6 +31,9 @@ for i in range(1, 2):
             realBtn = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/a')
             realBtn.click()
             udemy = driver.page_source
+
+            daRealLinks.add(driver.current_url)
+
 
 
 
