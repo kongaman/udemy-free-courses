@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from simpleG import simple_get
+from selenium import webdriver
 
 for i in range(1, 2):
     response = simple_get("https://www.discudemy.com/language/english/"+str(i))
@@ -13,15 +14,19 @@ for i in range(1, 2):
                 print(target)
                 links.add(target)
         daRealLinks = set()
+
+        driver = webdriver.Firefox()
+        driver.implicitly_wait(30)
+        daRealLinks = set()
         for entry in links:
-            singleSite = simple_get(entry)
-            if singleSite is not None:
-                sSHtml = BeautifulSoup(singleSite, 'html.parser')
-                for realLink in sSHtml.find_all('a'):
-                    realTarget = realLink.get('href')
-                    if realTarget.startswith('https://www.discudemy.com/go/'):
-                        print(target)
-                        daRealLinks.add(realTarget)
+            driver.get(entry)
+            python_button = driver.find_element_by_class_name('discBtn')
+            python_button.click()
+            sSHtml = driver.page_source
+            realBtn = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/a')
+            realBtn.click()
+            udemy = driver.page_source
+
 
 
 
