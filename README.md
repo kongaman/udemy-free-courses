@@ -23,3 +23,5 @@ Selenium requires geckodriver to interface with Firefox. Here's how to install g
 1. Download geckodriver from https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz (or if you need the 32 bit version, go to https://github.com/mozilla/geckodriver/releases to see more download options)
 2. Extract the file into your Downloads folder
 3. Open a console and run ```sudo mv ~/Downloads/geckodriver /usr/bin```
+
+Forget about adding to PATH or specifying the location in ```webdriver.Firefox()```.  I tried, it doesn't work
