@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from simpleG import simple_get
 from selenium import webdriver
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 
 for i in range(1, 2):
     response = simple_get("https://www.discudemy.com/language/english/"+str(i))
@@ -16,7 +17,10 @@ for i in range(1, 2):
         daRealLinks = set()
 
         driver = webdriver.Firefox()
+        #binary = FirefoxBinary('/usr/bin/firefox')
+        #driver = webdriver.Firefox(firefox_binary=binary)
         driver.implicitly_wait(30)
+
         daRealLinks = set()
         for entry in links:
             driver.get(entry)
