@@ -1,11 +1,10 @@
 # Webscraping Excercise
 
 Gets all the udemy links from page 1 on discudemy and opens them in a new firefox browser tab.<br>
-AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append existing file
+AND creates "target"-folder if it doesn't exist.<br>
+AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append existing file<br>
 
 TODO:
-
-- check on windows
 - make scraped amount of discudemy-pages customizable via command line arg
 - customizable language to scrape via parameter
 - autobuy for udemy
