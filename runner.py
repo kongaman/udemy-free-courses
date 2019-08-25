@@ -11,10 +11,7 @@ for i in range(1, 2):
         for link in html.find_all('a'):
             target = link.get('href')
             if target.startswith('https://www.discudemy.com/English/'):
-                print(target)
                 links.add(target)
-
-        daRealLinks = set()
 
         driver = webdriver.Firefox()
         driver.implicitly_wait(30)
@@ -22,15 +19,17 @@ for i in range(1, 2):
         daRealLinks = set()
         for entry in links:
             driver.get(entry)
+            main_window = driver.current_window_handle
             python_button = driver.find_element_by_class_name('discBtn')
             python_button.click()
             realBtn = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/a')
+            ulink = realBtn.text
+            if ulink.startswith('https://www.udemy.com/course/'):
+                daRealLinks.add(ulink)
             realBtn.click()
-            print(driver.current_url) #<---- Why is this not working? To fast?
-            udemy = driver.page_source.current_url
-            print(udemy)
 
-            #daRealLinks.add(driver.current_url)
+        for udemylink in daRealLinks:
+            print(udemylink)
 
 
 
