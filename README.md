@@ -1,7 +1,7 @@
 # Webscraping Excercise
 
 Gets all the udemy links from page 1 on discudemy and opens them in a new firefox browser tab.<br>
-AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append
+AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append existing file
 
 TODO:
 
