@@ -2,9 +2,14 @@ from bs4 import BeautifulSoup
 from simpleG import simple_get
 from selenium import webdriver
 
+from writeToF import writeToFile
+
+daRealLinks = set()
+filemode = "w"    # w = overwrite, a = append
+
 for i in range(1, 2):
     response = simple_get("https://www.discudemy.com/language/english/"+str(i))
-    print("Durchgang" + str(i))
+    print("Page" + str(i))
     if response is not None:
         html = BeautifulSoup(response, 'html.parser')
         links = set()
@@ -16,7 +21,6 @@ for i in range(1, 2):
         driver = webdriver.Firefox()
         driver.implicitly_wait(30)
 
-        daRealLinks = set()
         for entry in links:
             driver.get(entry)
             main_window = driver.current_window_handle
@@ -27,11 +31,4 @@ for i in range(1, 2):
             if ulink.startswith('https://www.udemy.com/course/'):
                 daRealLinks.add(ulink)
             realBtn.click()
-
-        for udemylink in daRealLinks:
-            print(udemylink)
-
-
-
-
-
+writeToFile(daRealLinks, filemode)

@@ -1,15 +1,14 @@
 # Webscraping Excercise
 
 Gets all the udemy links from page 1 on discudemy and opens them in a new firefox browser tab.<br>
-AND puts all udemy-links (including coupon code) in a list taht is printed at the end
+AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append
 
 TODO:
 
-- check on linux
-- get udemy link-list as a file
-- make scraped amount of discudemy-pages customizable via parameter
-- customizable language via parameter
-- working autobuy for udemy
+- check on windows
+- make scraped amount of discudemy-pages customizable via command line arg
+- customizable language to scrape via parameter
+- autobuy for udemy
 - regex to grab only specific courses
 - make it work with chrome browser
 
