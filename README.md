@@ -1,8 +1,9 @@
 # Webscraping Excercise
 
-Gets all the udemy links from page 1 on discudemy and opens them in a new firefox browser tab.<br>
+Gets all the udemy links from as many pages as you want on discudemy, and can open them in a new firefox browser tab.<br>
 AND creates "target"-folder if it doesn't exist.<br>
 AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append existing file<br>
+AND has configurable parameters in runner.py
 
 TODO:
 - make scraped amount of discudemy-pages customizable via command line arg

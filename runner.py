@@ -1,34 +1,19 @@
-from bs4 import BeautifulSoup
+from loopingBs4 import bs4loop
+from loopingSelenium import selenloop
 from simpleG import simple_get
-from selenium import webdriver
-
 from writeToF import writeToFile
-
-daRealLinks = set()
-filemode = "w"    # w = overwrite, a = append
-
-for i in range(1, 2):
+links = set()
+#Configurable Params
+filemode = "w"      # w = overwrite, a = append
+pagecount = 3       # number of discudemy pages to scan
+clicklinks = False  # wether or not to click the udemy links
+#Scraping
+for i in range(1, pagecount + 1):
     response = simple_get("https://www.discudemy.com/language/english/"+str(i))
-    print("Page" + str(i))
-    if response is not None:
-        html = BeautifulSoup(response, 'html.parser')
-        links = set()
-        for link in html.find_all('a'):
-            target = link.get('href')
-            if target.startswith('https://www.discudemy.com/English/'):
-                links.add(target)
-
-        driver = webdriver.Firefox()
-        driver.implicitly_wait(30)
-
-        for entry in links:
-            driver.get(entry)
-            main_window = driver.current_window_handle
-            python_button = driver.find_element_by_class_name('discBtn')
-            python_button.click()
-            realBtn = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/a')
-            ulink = realBtn.text
-            if ulink.startswith('https://www.udemy.com/course/'):
-                daRealLinks.add(ulink)
-            realBtn.click()
+    print("Page " + str(i))
+    pagelinks = bs4loop(response)
+    for link in pagelinks:
+        links.add(link)
+daRealLinks = selenloop(links, clicklinks)
+#Write to output-file
 writeToFile(daRealLinks, filemode)
