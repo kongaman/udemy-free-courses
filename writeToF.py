@@ -14,5 +14,5 @@ def writeToFile(setOfLinks, filemode):
     else:
         f = open("target/freeudemy.txt", filemode)
         for udemylink in setOfLinks:
-            f.write(udemylink + "\r\n")
+            f.write(udemylink + "\n")
         f.close()

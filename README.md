@@ -1,19 +1,16 @@
 # Webscraping Excercise
 
-Gets all the udemy links from as many pages as you want on discudemy, and can open them in a new firefox browser tab.<br>
-AND creates "target"-folder if it doesn't exist.<br>
-AND puts all udemy-links into a txt-file (folder "target") you can chose to overwrite or append existing file<br>
-AND has configurable parameters in runner.py
+Gets all the udemy links from as many pages as you want on discudemy.<br>
+You can customise behaviour via parameters in runny.py
+```
+#Configurable Params
+filemode = "w"      # "w" = overwrite, "a" = append
+lang = "english"    # "german" "spanish" "arabic" "russian" "turkish" "Italian" "french" "japanese" "portuguese"
+pagecount = 1       # number of discudemy pages to scrape
+clicklinks = True   # wether or not to click the udemy links - True False
+```
 
-TODO:
-- make scraped amount of discudemy-pages customizable via command line arg
-- customizable language to scrape via parameter
-- autobuy for udemy
-- regex to grab only specific courses
-- make it work with chrome browser
-
-
-## Configuration
+## Problems - Configuration / Installation
 ### Errors:
 selenium.common.exceptions.WebDriverException: Message: 'geckodriver' executable needs to be in PATH.<br>
 #### Linux:
@@ -24,3 +21,14 @@ Selenium requires geckodriver to interface with Firefox. Here's how to install g
 3. Open a console and run ```sudo mv ~/Downloads/geckodriver /usr/bin```
 
 Forget about adding to PATH or specifying the location in ```webdriver.Firefox()```.  I tried, it doesn't work
+
+## TODO:
+- check line terminator under linux
+- make scraped amount of discudemy-pages customizable via command line arg
+- customizable language to scrape via command line arg
+- autobuy for udemy
+- regex to grab only specific courses
+- make it work with chrome browser
+- maybe gui
+
+
